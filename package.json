@@ -1,7 +1,7 @@
 {
   "name": "electron-react-hot-ts-seed",
-  "version": "1.0.0",
-  "description": "Bolierplate project for Electron Apps using React, React-Hot-Loader, Typescript and Webpack",
+  "version": "1.0.1",
+  "description": "React/Typescript bolierplate project for Electron apps using Webpack and hot-reloading",
   "main": "./dist/main.js",
   "scripts": {
     "start": "electron ./dist/main.js",

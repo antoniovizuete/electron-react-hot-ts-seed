@@ -3,7 +3,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 let main = {
-  entry: ["./src/main/index.ts"],
+  entry: ["./electron/index.ts"],
 
   output: {
     path: path.join(__dirname, "../dist"),
@@ -53,7 +53,7 @@ let main = {
 };
 
 let renderer = {
-  entry: ["./src/renderer/index.tsx"],
+  entry: ["./src/index.tsx"],
 
   output: {
     path: path.join(__dirname, "../dist"),
@@ -76,7 +76,7 @@ let renderer = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "../src/renderer/index.html"),
+      template: path.resolve(__dirname, "../src/index.html"),
     }),
   ],
 
