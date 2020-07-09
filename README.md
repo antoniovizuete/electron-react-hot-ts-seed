@@ -1,6 +1,6 @@
 # electron-react-hot-ts-seed
 
-> Live Editing Environment for Electron Apps using React, React-Hot-Loader, Typescript and Webpack
+> React/Typescript bolierplate project for Electron apps using Webpack and hot-reloading
 
 ## Installation
 
