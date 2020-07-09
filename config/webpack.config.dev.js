@@ -1,6 +1,5 @@
-const webpack = require("webpack");
 const merge = require("webpack-merge");
-const exp = require("./webpack.config.base");
+const base = require("./webpack.config.base");
 
 module.exports = merge(
   {
@@ -15,5 +14,5 @@ module.exports = merge(
       ],
     },
   },
-  exp[0]
+  base.main
 );

@@ -1,9 +1,7 @@
 const webpack = require("webpack");
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 const merge = require("webpack-merge");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const exp = require("./webpack.config.base");
+const base = require("./webpack.config.base");
 
 module.exports = merge(
   {
@@ -23,26 +21,36 @@ module.exports = merge(
       new webpack.NamedModulesPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
+      new MiniCSSExtractPlugin({
+        filename: "[name].css",
+        chunkFilename: "[id].css",
+      }),
     ],
 
     devtool: "inline-source-map",
 
     module: {
       rules: [
-        // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
         {
           test: /\.tsx?$/,
           loaders: ["react-hot-loader/webpack", "ts-loader"],
         },
-        // This will cause the compiled CSS (and sourceMap) to be
-        // embedded within the compiled javascript bundle and added
-        // as a blob:// uri at runtime.
         {
-          test: /\.(scss|css)$/,
+          test: /\.s?css$/,
           use: [
-            "style-loader",
-            "css-loader?sourceMap",
-            "sass-loader?sourceMap",
+            {
+              loader: MiniCSSExtractPlugin.loader,
+              options: {
+                hmr: true,
+              },
+            },
+            "css-loader",
+            {
+              loader: "sass-loader",
+              options: {
+                sourceMap: true,
+              },
+            },
           ],
         },
       ],
@@ -59,5 +67,5 @@ module.exports = merge(
       // enable HMR on the server
     },
   },
-  exp[1]
+  base.renderer
 );

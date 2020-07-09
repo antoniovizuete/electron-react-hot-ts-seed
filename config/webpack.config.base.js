@@ -6,7 +6,7 @@ let main = {
   entry: ["./src/main/index.ts"],
 
   output: {
-    path: path.join(__dirname, "dist"),
+    path: path.join(__dirname, "../dist"),
     filename: "main.js",
   },
 
@@ -56,7 +56,7 @@ let renderer = {
   entry: ["./src/renderer/index.tsx"],
 
   output: {
-    path: path.join(__dirname, "dist"),
+    path: path.join(__dirname, "../dist"),
     filename: "renderer.js",
   },
 
@@ -76,7 +76,7 @@ let renderer = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "./src/renderer/index.html"),
+      template: path.resolve(__dirname, "../src/renderer/index.html"),
     }),
   ],
 
@@ -106,4 +106,4 @@ let renderer = {
   },
 };
 
-module.exports = [main, renderer];
+module.exports = { main, renderer };
